@@ -38,5 +38,5 @@ nix run .#switch
 **macOS:**
 
 ```bash
-sudo nix run nix-darwin -- switch --flake .#Ryusei-M-G
+sudo nix run nix-darwin -- switch --flake .#default --impure
 ```

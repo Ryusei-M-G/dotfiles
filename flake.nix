@@ -37,13 +37,14 @@
           users.users.${username}.home = "/Users/${username}";
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
           home-manager.users.${username} = import ./nix/modules/home.nix;
         }
       ];
     };
   in {
-    # macOS: sudo nix run nix-darwin -- switch --flake .#<username>
-    darwinConfigurations.Ryusei-M-G = mkDarwin { username = "Ryusei-M-G"; };
+    # macOS: sudo nix --impure run nix-darwin -- switch --flake .#default
+    darwinConfigurations.default = mkDarwin { username = builtins.getEnv "SUDO_USER"; };
 
     # Linux/WSL: nix run .#switch
     # Add your username here:

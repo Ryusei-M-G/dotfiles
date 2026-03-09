@@ -1,6 +1,6 @@
-fish_add_path /usr/local/bin /usr/bin /bin /usr/sbin /sbin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/bin
+fish_add_path /usr/local/bin /usr/bin /bin /usr/sbin /sbin
 
 set -gx NVM_DIR $HOME/.nvm
 
