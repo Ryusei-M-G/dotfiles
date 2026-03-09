@@ -1,11 +1,12 @@
-if not status is-interactive
-    return
-end
-
+fish_add_path /usr/local/bin /usr/bin /bin /usr/sbin /sbin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/bin
 
 set -gx NVM_DIR $HOME/.nvm
+
+if not status is-interactive
+    return
+end
 
 abbr -a ll 'eza -lah'
 abbr -a la 'eza -A'

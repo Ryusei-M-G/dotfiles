@@ -16,11 +16,19 @@
   };
 
   outputs = { self, nixpkgs, home-manager, nix-darwin, ... }: let
-    username = "Ryusei-M-G";
-    linuxUser = "yuuseiorishima";
+    mkHome = { system, username }: home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      modules = [
+        ./nix/modules/home.nix
+        {
+          home.username = username;
+          home.homeDirectory = "/home/${username}";
+        }
+      ];
+    };
   in {
-    # macOS: sudo nix run nix-darwin -- switch --flake .#Ryusei-M-G
-    darwinConfigurations.${username} = nix-darwin.lib.darwinSystem {
+    # macOS: sudo nix run nix-darwin -- switch --flake .#<username>
+    darwinConfigurations.Ryusei-M-G = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
         ./nix/modules/darwin.nix
@@ -28,22 +36,14 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.${username} = import ./nix/modules/home.nix;
+          home-manager.users.Ryusei-M-G = import ./nix/modules/home.nix;
         }
       ];
     };
 
     # Linux/WSL: nix run .#switch
-    homeConfigurations.${linuxUser} = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      modules = [
-        ./nix/modules/home.nix
-        {
-          home.username = linuxUser;
-          home.homeDirectory = "/home/${linuxUser}";
-        }
-      ];
-    };
+    # Add your username here:
+    homeConfigurations.klran = mkHome { system = "x86_64-linux"; username = "klran"; };
 
     packages.x86_64-linux.switch = let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -51,7 +51,7 @@
       nix = pkgs.nix;
     in pkgs.writeShellScriptBin "switch" ''
       export PATH="${nix}/bin:$PATH"
-      exec ${hm}/bin/home-manager switch -b backup --flake "path:$(pwd)#${linuxUser}" "$@"
+      exec ${hm}/bin/home-manager switch -b backup --flake "path:$(pwd)#$USER" "$@"
     '';
   };
 }
