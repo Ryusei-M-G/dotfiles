@@ -17,14 +17,14 @@ Personal dotfiles managed with [Nix](https://nixos.org/) + [Home Manager](https:
 ### 1. Install Nix
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
 ### 2. Clone
 
 ```bash
-git clone https://github.com/Ryusei-M-G/dotfiles.git ~/dev/github/Ryusei-M-G/dotfiles
-cd ~/dev/github/Ryusei-M-G/dotfiles
+git clone https://github.com/Ryusei-M-G/dotfiles.git ~/dev/github.com/Ryusei-M-G/dotfiles
+cd ~/dev/github.com/Ryusei-M-G/dotfiles
 ```
 
 ### 3. Apply

@@ -26,20 +26,24 @@
         }
       ];
     };
-  in {
-    # macOS: sudo nix run nix-darwin -- switch --flake .#<username>
-    darwinConfigurations.Ryusei-M-G = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
+
+    mkDarwin = { username, system ? "aarch64-darwin" }: nix-darwin.lib.darwinSystem {
+      inherit system;
       modules = [
         ./nix/modules/darwin.nix
         home-manager.darwinModules.home-manager
         {
+          system.primaryUser = username;
+          users.users.${username}.home = "/Users/${username}";
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.Ryusei-M-G = import ./nix/modules/home.nix;
+          home-manager.users.${username} = import ./nix/modules/home.nix;
         }
       ];
     };
+  in {
+    # macOS: sudo nix run nix-darwin -- switch --flake .#<username>
+    darwinConfigurations.Ryusei-M-G = mkDarwin { username = "Ryusei-M-G"; };
 
     # Linux/WSL: nix run .#switch
     # Add your username here:
