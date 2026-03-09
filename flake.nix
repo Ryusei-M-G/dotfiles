@@ -43,7 +43,7 @@
       ];
     };
   in {
-    # macOS: sudo nix --impure run nix-darwin -- switch --flake .#default
+    # macOS: sudo nix run nix-darwin -- switch --flake .#default --impure
     darwinConfigurations.default = mkDarwin { username = builtins.getEnv "SUDO_USER"; };
 
     # Linux/WSL: nix run .#switch
