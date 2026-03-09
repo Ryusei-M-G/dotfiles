@@ -1,0 +1,12 @@
+format = """
+$directory\
+$git_branch\
+$character"""
+[directory]
+truncation_length = 2
+fish_style_pwd_dir_length = 1
+use_logical_path = false
+[line_break]
+disabled = true
+[git_branch]
+format = " [$branch]($style)"
