@@ -10,6 +10,26 @@ return {
   },
 
   -- =====================
+  -- snacks.nvim: dotfiles をデフォルト表示
+  -- =====================
+  {
+    "folke/snacks.nvim",
+    opts = {
+      explorer = {
+        replace_netrw = true,
+      },
+      picker = {
+        sources = {
+          explorer = {
+            hidden = true,
+            ignored = true,
+          },
+        },
+      },
+    },
+  },
+
+  -- =====================
   -- 背景透過
   -- =====================
   {
