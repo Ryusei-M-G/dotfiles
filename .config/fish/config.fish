@@ -11,11 +11,11 @@ end
 abbr -a ll 'eza -lah'
 abbr -a la 'eza -A'
 abbr -a l 'eza -CF'
-abbr -a ls 'eza'
-abbr -a grep 'rg'
-abbr -a cl 'claude'
+abbr -a ls eza
+abbr -a grep rg
+abbr -a cl claude
 abbr -a cld 'claude --dangerously-skip-permissions'
-abbr -a g 'git'
+abbr -a g git
 abbr -a gaa 'git add -A'
 abbr -a gcm 'git commit -m'
 abbr -a gp 'git push'
