@@ -11,6 +11,7 @@ end
 abbr -a ll 'eza -lah'
 abbr -a la 'eza -A'
 abbr -a l 'eza -CF'
+abbr -a ls 'eza'
 abbr -a grep 'rg'
 abbr -a cl 'claude'
 abbr -a cld 'claude --dangerously-skip-permissions'
