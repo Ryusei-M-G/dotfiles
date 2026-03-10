@@ -47,8 +47,7 @@
     darwinConfigurations.default = mkDarwin { username = builtins.getEnv "SUDO_USER"; };
 
     # Linux/WSL: nix run .#switch
-    # Add your username here:
-    homeConfigurations.klran = mkHome { system = "x86_64-linux"; username = "klran"; };
+    homeConfigurations.default = mkHome { system = "x86_64-linux"; username = builtins.getEnv "USER"; };
 
     packages.x86_64-linux.switch = let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -56,7 +55,7 @@
       nix = pkgs.nix;
     in pkgs.writeShellScriptBin "switch" ''
       export PATH="${nix}/bin:$PATH"
-      exec ${hm}/bin/home-manager switch -b backup --flake "path:$(pwd)#$USER" "$@"
+      exec ${hm}/bin/home-manager switch -b backup --flake "path:$(pwd)#default" --impure "$@"
     '';
   };
 }
