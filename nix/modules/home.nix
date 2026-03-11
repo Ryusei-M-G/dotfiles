@@ -12,6 +12,7 @@
     btop
     starship
     tmux
+    nodejs_22
     nodePackages."@antfu/ni"
   ];
 

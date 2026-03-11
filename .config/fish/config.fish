@@ -1,3 +1,4 @@
+fish_add_path $HOME/.nix-profile/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/bin
 fish_add_path /usr/local/bin /usr/bin /bin /usr/sbin /sbin
