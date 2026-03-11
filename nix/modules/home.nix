@@ -12,6 +12,7 @@
     btop
     starship
     tmux
+    nodePackages."@antfu/ni"
   ];
 
   xdg.configFile = {
