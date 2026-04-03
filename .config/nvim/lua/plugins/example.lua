@@ -88,6 +88,13 @@ return {
         desc = "Find Files",
       },
       {
+        "<leader>fg",
+        function()
+          require("telescope.builtin").live_grep()
+        end,
+        desc = "Live Grep",
+      },
+      {
         "<leader>fp",
         function()
           require("telescope.builtin").find_files({
