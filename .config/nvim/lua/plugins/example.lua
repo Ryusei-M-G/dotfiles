@@ -115,8 +115,7 @@ return {
   },
 
   -- =====================
-  -- LSP (pyright だけ明示追加)
-  -- TypeScript/JSON は extras に任せる
+  -- LSP
   -- =====================
   {
     "neovim/nvim-lspconfig",
@@ -125,6 +124,18 @@ return {
       ---@type lspconfig.options
       servers = {
         pyright = {},
+        vtsls = {
+          settings = {
+            typescript = {
+              tsserver = {
+                experimental = {
+                  -- 複数 tsconfig を持つプロジェクトで各ファイルに最も近い tsconfig を使う
+                  enableProjectDiagnostics = true,
+                },
+              },
+            },
+          },
+        },
       },
     },
   },
